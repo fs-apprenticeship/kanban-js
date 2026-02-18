@@ -12,3 +12,95 @@ generator client {
 datasource db {
   provider = "postgresql"
 }
+
+model Role {
+  id                String          @id @default(uuid())
+  name              String          // ADMIN, APPRENTICE
+  description       String?
+  createdAt         DateTime        @default(now())
+  users             User[]
+}
+
+model User {
+  id                String          @id @default(uuid())
+  email             String          @unique
+  firstName         String
+  lastName          String
+  roleId            String
+  role              Role            @relation(fields: [roleId], references: [id])
+  isActive          Boolean         @default(true)
+  createdAt         DateTime        @default(now())
+  
+  createdTasks      Task[]          @relation("TaskCreator")
+  taskAssignments   TaskAssignee[]
+  teamMemberships   TeamMember[]
+}
+
+model Team {
+  id                String          @id @default(uuid())
+  name              String
+  description       String?
+  members           TeamMember[]
+  projects          ProjectTeam[]
+}
+
+model Project {
+  id                String          @id @default(uuid())
+  name              String
+  description       String?
+  createdAt         DateTime        @default(now())
+  
+  tasks             Task[]
+  teams             ProjectTeam[]
+}
+
+model Task {
+  id                String          @id @default(uuid())
+  projectId         String
+  project           Project         @relation(fields: [projectId], references: [id])
+  description       String?
+  createdById       String
+  createdBy         User            @relation("TaskCreator", fields: [createdById], references: [id])
+  statusId          String
+  status            Status          @relation(fields: [statusId], references: [id])
+  createdAt         DateTime        @default(now())
+  updatedAt         DateTime        @updatedAt
+  assignees         TaskAssignee[]
+}
+
+model Status {
+  id                String          @id @default(uuid())
+  name              String          
+  description       String?
+  createdAt         DateTime        @default(now())
+  tasks             Task[]
+}
+
+// Join tables
+
+model TaskAssignee {
+  taskId            String
+  userId            String
+  task              Task            @relation(fields: [taskId], references: [id])
+  user              User            @relation(fields: [userId], references: [id])
+
+  @@id([taskId, userId])
+}
+
+model ProjectTeam {
+  projectId         String
+  teamId            String
+  project           Project         @relation(fields: [projectId], references: [id])
+  team              Team            @relation(fields: [teamId], references: [id])
+
+  @@id([projectId, teamId])
+}
+
+model TeamMember {
+  teamId            String
+  userId            String
+  team              Team            @relation(fields: [teamId], references: [id])
+  user              User            @relation(fields: [userId], references: [id])
+
+  @@id([teamId, userId])
+}
