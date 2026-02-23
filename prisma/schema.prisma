@@ -5,17 +5,18 @@
 // Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
 
 generator client {
-  provider = "prisma-client"
+  provider = "prisma-client-js"
   output   = "../app/generated/prisma"
 }
 
 datasource db {
   provider = "postgresql"
+  url = env("DATABASE_URL")
 }
 
 model Role {
   id                String          @id @default(uuid())
-  name              String          // ADMIN, APPRENTICE
+  name              String          @unique   // ADMIN, APPRENTICE
   description       String?
   createdAt         DateTime        @default(now())
   users             User[]
