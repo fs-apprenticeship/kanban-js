@@ -22,6 +22,7 @@ model Role {
 
 model User {
   id                String          @id @default(uuid())
+  supabaseUserId    String?         @unique
   email             String          @unique
   firstName         String
   lastName          String
