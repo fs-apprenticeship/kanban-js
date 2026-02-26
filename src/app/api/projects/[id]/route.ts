@@ -34,4 +34,3 @@ export const PATCH = route<{ params: { id: string } }>(async (req, { params }) =
     headers: { "Content-Type": "application/json" },
   });
 });
-
