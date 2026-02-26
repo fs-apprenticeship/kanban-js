@@ -1,5 +1,4 @@
 import { prisma } from "@/src/lib/prisma";
-import { Task } from "@prisma/client";
 
 // Type
 export type Project = {
