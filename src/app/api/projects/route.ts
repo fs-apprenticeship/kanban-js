@@ -2,7 +2,9 @@ import { route } from "@/src/lib/http/route";
 import { getProjects } from "@/src/features/projects/getProjects";
 import { createProject } from "@/src/features/projects/createProject";
 
+
 export const GET = route(async () => {
+
     const projects = await getProjects();
     return new Response(JSON.stringify(projects), { status: 200 });
 })
