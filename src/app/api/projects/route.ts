@@ -13,3 +13,9 @@ export const POST = route(async (req: Request) => {
     const project = await createProject(body);
     return new Response(JSON.stringify({ project }), { status: 201 })
 })
+
+export const POST = route(async (req: Request) => {
+    const body = await req.json()
+    const project = await createProject(body);
+    return new Response(JSON.stringify({ project }), { status: 201 })
+})
