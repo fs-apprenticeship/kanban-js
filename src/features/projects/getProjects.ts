@@ -1,4 +1,5 @@
 import { prisma } from "@/src/lib/prisma";
+import { requireAuth } from "../auth/guards";
 
 // Type
 export type Project = {
@@ -10,7 +11,26 @@ export type Project = {
 
 // Fetch projects from the database
 export async function getProjects(): Promise<Project[]> {
+
+    const ctx = await requireAuth(prisma);
+
+    const user = ctx.user!
+
+    const whereClause = 
+        user.role.name === "APPRENTICE"
+            ? {
+                teams: {
+                    some: {
+                        team: {
+                            members: { some: { userId: user.id }},
+                        },
+                    },
+                },
+            }
+            : {};
+
     const projects = await prisma.project.findMany({
+        where: whereClause,
         include: {
             tasks: { include: { status: true }}, // include status for aggregation
         },
