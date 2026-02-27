@@ -1,5 +1,6 @@
 import { prisma } from "@/src/lib/prisma";
 import { notFound } from "@/src/lib/http/errors";
+import { requireProjectAccess } from "../auth/guards";
 
 // Frontend-friendly Task type
 export type Task = {
@@ -19,6 +20,11 @@ export type ProjectDetail = {
 };
 
 export async function getProjectDetail(projectId: string): Promise<ProjectDetail> {
+
+  // Enforce access rules: Admin can see all, Apprentice only if linked to ateam
+  const ctx = await requireProjectAccess(prisma, projectId);
+
+  //cts.user is guaranteed to exist at this point
   let project;
 
   try {
