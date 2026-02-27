@@ -20,11 +20,14 @@ export type ProjectDetail = {
 };
 
 export async function getProjectDetail(projectId: string): Promise<ProjectDetail> {
+<<<<<<< HEAD
 
   // Enforce access rules: Admin can see all, Apprentice only if linked to ateam
   const ctx = await requireProjectAccess(prisma, projectId);
 
   //cts.user is guaranteed to exist at this point
+=======
+>>>>>>> ab66c90 (update getProjects guard usage)
   let project;
 
   try {
