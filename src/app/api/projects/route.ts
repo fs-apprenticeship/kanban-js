@@ -1,7 +1,6 @@
 import { route } from "@/src/lib/http/route";
-import { badRequest } from "@/src/lib/http/errors";
 import { getProjects } from "@/src/features/projects/getProjects";
-import { createProject } from "@/src/features/projects/createProject"
+import { createProject } from "@/src/features/projects/createProject";
 
 export const GET = route(async () => {
     try {
