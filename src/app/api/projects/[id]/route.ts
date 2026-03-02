@@ -1,6 +1,6 @@
 import { route } from "@/src/lib/http/route";
 import { badRequest } from "@/src/lib/http/errors";
- import { getProjectDetail } from "@/src/features/projects/getProjectDetail";
+import { getProjectDetail } from "@/src/features/projects/getProjectDetail";
 import { editProject, EditProjectInput } from "@/src/features/projects/editProject";
 
 // GET /api/project/[id] - fetch project details

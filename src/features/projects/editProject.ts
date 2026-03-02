@@ -40,7 +40,8 @@ export async function editProject(input: EditProjectInput) {
             },
         });
         return updatedProject;
-    } catch (err: any) {
+    } catch (err) {
+
         if (
             err instanceof Prisma.PrismaClientKnownRequestError &&
             err.code === "P2002"
