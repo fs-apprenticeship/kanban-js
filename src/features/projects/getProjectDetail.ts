@@ -15,6 +15,7 @@ export type ProjectDetail = {
   id: string;
   name: string;
   description?: string;
+  isActive: boolean;
   tasks: Task[];
   taskStats: Record<string, number>;
 };
@@ -36,6 +37,7 @@ export async function getProjectDetail(projectId: string): Promise<ProjectDetail
         id: true,
         name: true,
         description: true,
+        isActive: true,
         tasks: {
           select: {
             id: true,
@@ -79,6 +81,7 @@ export async function getProjectDetail(projectId: string): Promise<ProjectDetail
     id: project.id,
     name: project.name,
     description: project.description ?? undefined,
+    isActive: project.isActive,
     tasks,
     taskStats,
   };
