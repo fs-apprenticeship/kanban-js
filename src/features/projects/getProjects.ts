@@ -20,6 +20,7 @@ export async function getProjects(): Promise<Project[]> {
     const whereClause = 
         user.role.name === "APPRENTICE"
             ? {
+                isActive: true,
                 teams: {
                     some: {
                         team: {
