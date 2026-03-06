@@ -3,7 +3,7 @@
 import { useEffect, useState } from "react";
 import { Card, CardHeader, CardBody, Badge, Spinner } from "@heroui/react";
 
-export default function ProjectPage() {
+export default function ProjectsList() {
     const [projects, setProjects] = useState<any[]>([]);
     const [loading, setLoading] = useState(true);
 
@@ -40,7 +40,6 @@ export default function ProjectPage() {
 
     return (
         <div className="p-6">
-            <h1 className="text-2xl font-bold mb-4">Projects</h1>
             {projects.length === 0 ? (
                 <p>No projects found.</p>
             ) : (
