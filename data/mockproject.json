@@ -1,0 +1,104 @@
+{
+  "project": {
+    "title": "Platform Migration Initiative",
+    "description": "Migrating internal services to a new infrastructure stack.",
+    "assignees": [
+      "Sarah Kim",
+      "David Rodriguez",
+      "Priya Patel",
+      "Liam O'Connor"
+    ]
+  },
+  "tasks": [
+    {
+      "id": "1",
+      "title": "Initialize project repository",
+      "description": "Create repository structure, configure linting rules, and set up CI pipeline.",
+      "status": "complete"
+    },
+    {
+      "id": "2",
+      "title": "Design system architecture",
+      "description": "Draft architecture diagram outlining services, database, and deployment flow.",
+      "status": "active"
+    },
+    {
+      "id": "3",
+      "title": "Create authentication service",
+      "description": "Implement OAuth login flow and session management.",
+      "status": "active"
+    },
+    {
+      "id": "4",
+      "title": "Database schema design",
+      "description": "Define tables, indexes, and relations for user data and project tasks.",
+      "status": "pending"
+    },
+    {
+      "id": "5",
+      "title": "API routing setup",
+      "description": "Configure REST endpoints and base middleware.",
+      "status": "complete"
+    },
+    {
+      "id": "6",
+      "title": "Task management service",
+      "description": "Implement CRUD operations for tasks with validation and status transitions.",
+      "status": "active"
+    },
+    {
+      "id": "7",
+      "title": "Build dashboard layout",
+      "description": "Create the base UI layout for the dashboard including navigation and containers.",
+      "status": "complete"
+    },
+    {
+      "id": "8",
+      "title": "Implement card grid UI",
+      "description": "Create responsive card grid component displaying task summaries.",
+      "status": "active"
+    },
+    {
+      "id": "9",
+      "title": "Error handling middleware",
+      "description": "Implement global error handler to standardize API responses.",
+      "status": "pending"
+    },
+    {
+      "id": "10",
+      "title": "Deployment configuration",
+      "description": "Prepare production deployment settings and environment configuration.",
+      "status": "pending"
+    },
+    {
+      "id": "11",
+      "title": "Performance profiling",
+      "description": "Run benchmarks and identify bottlenecks in database queries and API responses.",
+      "status": "error"
+    },
+    {
+      "id": "12",
+      "title": "User permissions model",
+      "description": "Define role-based access control rules for project users.",
+      "status": "pending"
+    },
+    {
+      "id": "13",
+      "title": "Notification service",
+      "description": "Implement task update notifications using websocket events.",
+      "status": "active"
+    },
+    {
+      "id": "14",
+      "title": "Logging infrastructure",
+      "description": "Integrate structured logging for server events and errors.",
+      "status": "complete"
+    },
+    {
+      "id": "15",
+      "title": "Integration tests",
+      "description": "Write integration tests covering authentication and task workflows.",
+      "status": "pending"
+    }
+  ]
+}
