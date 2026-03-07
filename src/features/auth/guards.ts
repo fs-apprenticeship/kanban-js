@@ -1,6 +1,7 @@
 import type { PrismaClient } from "@prisma/client";
-import { forbidden, unauthorized } from "@/src/lib/http/errors" ;
+import { forbidden, unauthorized, notFound } from "@/src/lib/http/errors" ;
 import { getAuthContext } from "./get-auth-context";
+import { convertBoxToBoundingBox } from "framer-motion";
 
 export type RoleName = "ADMIN" | "APPRENTICE";
 
