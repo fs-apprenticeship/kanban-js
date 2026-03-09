@@ -1,6 +1,7 @@
 import { prisma } from "@/src/lib/prisma";
 import { requireRole } from "../auth/guards";
 import { badRequest } from "@/src/lib/http/errors";
+import { Prisma } from "@prisma/client";
 
 export interface EditProjectInput {
     id: string;
@@ -40,7 +41,10 @@ export async function editProject(input: EditProjectInput) {
         });
         return updatedProject;
     } catch (err: any) {
-        if (err.code === "P2002") {
+        if (
+            err instanceof Prisma.PrismaClientKnownRequestError &&
+            err.code === "P2002"
+        ) {
             throw badRequest("Project name already exists");
         }
         console.error(err);
