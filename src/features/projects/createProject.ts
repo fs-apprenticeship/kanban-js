@@ -3,7 +3,6 @@ import { requireRole } from "../auth/guards";
 import { badRequest } from "@/src/lib/http/errors";
 import { Prisma } from "@prisma/client";
 
-
 interface CreateProjectInput {
     name: string;
     description?: string;
@@ -26,7 +25,6 @@ export async function createProject(input: CreateProjectInput) {
         });
 
         return project;
-        
     } catch (err) {
         if (
             err instanceof Prisma.PrismaClientKnownRequestError &&
