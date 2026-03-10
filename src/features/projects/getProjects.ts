@@ -6,6 +6,7 @@ export type Project = {
     id: string;
     name: string;
     description?: string | null;
+    isActive: boolean
     taskStats: Record<string, number>;
 }
 
@@ -19,6 +20,7 @@ export async function getProjects(): Promise<Project[]> {
     const whereClause = 
         user.role.name === "APPRENTICE"
             ? {
+                isActive: true,
                 teams: {
                     some: {
                         team: {
@@ -50,6 +52,7 @@ export async function getProjects(): Promise<Project[]> {
             id: project.id,
             name: project.name,
             description: project.description,
+            isActive: project.isActive,
             taskStats: tasksByStatus,
         }
     })
